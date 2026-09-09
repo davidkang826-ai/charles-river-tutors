@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Charles River Tutors — Launch Checklist</title>
+<style>
+  :root {
+    --paper: #F6F4EC;
+    --paper-raised: #FCFBF7;
+    --ink: #26251F;
+    --ink-soft: #6B6858;
+    --navy: #1E3A5F;
+    --navy-soft: #4C6584;
+    --brass: #9C7A3C;
+    --brass-soft: #C9AD79;
+    --line: #DEDACB;
+    --done-bg: #EFEAD9;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  header {
+    margin-bottom: 28px;
+  }
+
+  .eyebrow {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    color: var(--navy-soft);
+    font-size: 14px;
+    margin: 0 0 4px;
+  }
+
+  h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--navy);
+    margin: 0 0 10px;
+    letter-spacing: 0.2px;
+  }
+
+  .sub {
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 0 0 24px;
+  }
+
+  .overall {
+    border: 1px solid var(--line);
+    background: var(--paper-raised);
+    border-radius: 4px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .overall-num {
+    font-family: Georgia, serif;
+    font-size: 28px;
+    color: var(--navy);
+    min-width: 58px;
+    text-align: right;
+  }
+
+  .overall-track {
+    flex: 1;
+  }
+
+  .overall-label {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+
+  .bar {
+    height: 8px;
+    background: var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    background: var(--brass);
+    transition: width 0.35s ease;
+  }
+
+  section.group {
+    margin-top: 30px;
+  }
+
+  .group-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+
+  .group-title {
+    font-family: Georgia, serif;
+    font-size: 17px;
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  .group-count {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 6px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .item:hover {
+    background: var(--done-bg);
+  }
+
+  .box {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    border: 1.5px solid var(--navy-soft);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--paper-raised);
+  }
+
+  .item.checked .box {
+    background: var(--brass);
+    border-color: var(--brass);
+  }
+
+  .box svg {
+    width: 12px;
+    height: 12px;
+    opacity: 0;
+  }
+
+  .item.checked .box svg {
+    opacity: 1;
+  }
+
+  .label {
+    flex: 1;
+  }
+
+  .item.checked .label {
+    color: var(--ink-soft);
+    text-decoration: line-through;
+    text-decoration-color: var(--brass-soft);
+  }
+
+  .note {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    display: block;
+    margin-top: 1px;
+  }
+
+  footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .status {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  .reset {
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 12.5px;
+    padding: 6px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .reset:hover {
+    border-color: var(--navy-soft);
+    color: var(--navy);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Charles River Tutors</p>
+    <h1>Launch Checklist</h1>
+    <p class="sub">Everything from incorporation through your first ten students, in order. Check items off as you go — your progress is saved automatically.</p>
+    <div class="overall">
+      <div class="overall-num" id="overallNum">0%</div>
+      <div class="overall-track">
+        <div class="overall-label" id="overallLabel">0 of 0 tasks complete</div>
+        <div class="bar"><div class="bar-fill" id="overallBar" style="width:0%"></div></div>
+      </div>
+    </div>
+  </header>
+
+  <div id="groups"></div>
+
+  <footer>
+    <span class="status" id="status">Loading your progress…</span>
+    <button class="reset" id="resetBtn">Reset all</button>
+  </footer>
+</div>
+
+<script>
+const DATA = [
+  {
+    title: "Legal Formation",
+    items: [
+      { id: "name-clear", label: "Clear business name — USPTO Class 041 + MA name search", note: "Done: Charles River Tutors" , done: true },
+      { id: "cert-org", label: "File Certificate of Organization with MA Secretary of the Commonwealth", note: "$500 by mail / $520 online" },
+      { id: "reg-agent", label: "Choose a Registered Agent", note: "Northwest Registered Agent ($125/yr) or self, for now" },
+      { id: "ein", label: "Get an EIN from the IRS", note: "Free, online, a few minutes" },
+      { id: "bank", label: "Open a business bank account", note: "Requires EIN first" },
+      { id: "operating-agreement", label: "Draft an LLC Operating Agreement" },
+      { id: "local-cert", label: "File local Business Certificate in Cambridge" },
+    ],
+  },
+  {
+    title: "Recurring Compliance",
+    items: [
+      { id: "annual-report", label: "Set a calendar reminder for the MA Annual Report", note: "$500/year, due on filing anniversary — no state reminder is sent" },
+    ],
+  },
+  {
+    title: "Background Check",
+    items: [
+      { id: "cori-fill", label: "Fill out the CORI Personal Request Form" },
+      { id: "cori-notarize", label: "Get the signature notarized" },
+      { id: "cori-mail", label: "Mail form + $25 money order to DCJIS", note: "200 Arlington St, Suite 2200, Chelsea, MA 02150, Attn: CORI Unit" },
+      { id: "cori-result", label: "Receive CORI result" },
+    ],
+  },
+  {
+    title: "Insurance",
+    items: [
+      { id: "gen-liability", label: "Get general liability insurance quote and bind policy" },
+      { id: "prof-liability", label: "Get professional liability / E&O quote and bind policy" },
+      { id: "abuse-liability", label: "Add abuse/molestation liability coverage" },
+      { id: "auto-liability", label: "Add non-owned auto liability for home visits" },
+    ],
+  },
+  {
+    title: "Client-Facing Setup",
+    items: [
+      { id: "service-agreement", label: "Draft Service Agreement & Liability Waiver", done: true },
+      { id: "payment-method", label: "Set up Zelle (or Venmo/PayPal) for payment" },
+      { id: "payment-log", label: "Set up a personal payment tracking spreadsheet" },
+      { id: "books-research", label: "Research best current SAT and GRE prep books", done: true },
+      { id: "books-buy", label: "Purchase core SAT prep books" },
+    ],
+  },
+  {
+    title: "Curriculum & Materials — SAT First",
+    items: [
+      { id: "diagnostic", label: "Build diagnostic assessment from official practice tests" },
+      { id: "domain-notes", label: "Write teaching notes for all 8 domains", note: "4 Reading & Writing + 4 Math" },
+      { id: "item-bank", label: "Build a starter practice item bank per domain" },
+      { id: "session-template", label: "Build session template (60 / 90 / 120-minute formats)" },
+      { id: "pilot-run", label: "Pilot the full flow once before a real student" },
+    ],
+  },
+  {
+    title: "Community Outreach",
+    items: [
+      { id: "korean-school", label: "Contact Boston Central Korean Culture School about a talk or table" },
+      { id: "flyer-spots", label: "Identify 3–4 Korean grocery stores or restaurants for flyer placement" },
+      { id: "bostonkorea", label: "Post listing to BostonKorea.com tutoring section" },
+      { id: "bostonktown", label: "Post listing to bostonktown.com classifieds" },
+      { id: "kacl", label: "Check KACL-NE / Massachusetts Korean Cultural Society for events" },
+    ],
+  },
+  {
+    title: "First Students",
+    items: [
+      { id: "warm-lead", label: "Reach out to warmest lead for student #1" },
+      { id: "first-session", label: "Complete first tutoring session" },
+      { id: "first-testimonial", label: "Collect first testimonial or score data point" },
+      { id: "ten-students", label: "Reach 10 active students" },
+    ],
+  },
+  {
+    title: "Later — Physical Space",
+    items: [
+      { id: "tour-workbar", label: "Tour Workbar Harvard Square" },
+      { id: "tour-regus", label: "Tour Regus Harvard Square–Mifflin Place" },
+      { id: "newton-quote", label: "Get Newton commercial space quotes" },
+      { id: "lexington-quote", label: "Get Lexington commercial space quotes" },
+      { id: "additional-insured", label: "Confirm additional-insured requirements with chosen space" },
+    ],
+  },
+];
+
+const STORAGE_KEY = "crt-launch-checklist-v1";
+let state = {};
+
+const groupsEl = document.getElementById("groups");
+const statusEl = document.getElementById("status");
+const resetBtn = document.getElementById("resetBtn");
+
+function defaultState() {
+  const s = {};
+  DATA.forEach(g => g.items.forEach(it => { s[it.id] = !!it.done; }));
+  return s;
+}
+
+function render() {
+  groupsEl.innerHTML = "";
+  let totalDone = 0, totalAll = 0;
+
+  DATA.forEach(group => {
+    const groupDone = group.items.filter(it => state[it.id]).length;
+    totalDone += groupDone;
+    totalAll += group.items.length;
+
+    const section = document.createElement("section");
+    section.className = "group";
+
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.innerHTML = `<span class="group-title">${group.title}</span><span class="group-count">${groupDone} / ${group.items.length}</span>`;
+    section.appendChild(head);
+
+    group.items.forEach(it => {
+      const row = document.createElement("div");
+      row.className = "item" + (state[it.id] ? " checked" : "");
+      row.innerHTML = `
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+        <span class="label">${it.label}${it.note ? `<span class="note">${it.note}</span>` : ""}</span>
+      `;
+      row.addEventListener("click", () => toggle(it.id));
+      section.appendChild(row);
+    });
+
+    groupsEl.appendChild(section);
+  });
+
+  const pct = totalAll ? Math.round((totalDone / totalAll) * 100) : 0;
+  document.getElementById("overallNum").textContent = pct + "%";
+  document.getElementById("overallLabel").textContent = `${totalDone} of ${totalAll} tasks complete`;
+  document.getElementById("overallBar").style.width = pct + "%";
+}
+
+async function toggle(id) {
+  state[id] = !state[id];
+  render();
+  try {
+    await window.storage.set(STORAGE_KEY, JSON.stringify(state));
+    statusEl.textContent = "Progress saved";
+  } catch (e) {
+    statusEl.textContent = "Couldn't save — check connection";
+  }
+}
+
+async function load() {
+  try {
+    const result = await window.storage.get(STORAGE_KEY);
+    state = result && result.value ? JSON.parse(result.value) : defaultState();
+    statusEl.textContent = "Progress loaded";
+  } catch (e) {
+    state = defaultState();
+    statusEl.textContent = "Starting fresh";
+  }
+  render();
+}
+
+resetBtn.addEventListener("click", async () => {
+  state = defaultState();
+  render();
+  try {
+    await window.storage.set(STORAGE_KEY, JSON.stringify(state));
+    statusEl.textContent = "Reset to defaults";
+  } catch (e) {
+    statusEl.textContent = "Reset locally — couldn't save";
+  }
+});
+
+load();
+</script>
+</body>
+</html>
